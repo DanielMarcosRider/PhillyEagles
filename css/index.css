@@ -1,0 +1,627 @@
+@font-face {
+    font-family: Titulos;
+    src: url(../fonts/EXPLORE\ EVERYDAY.ttf);
+}
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+/*----------------BANNER-----------------*/
+.banner{
+    background-image: url(../img/banner.png);
+    width: 100%;
+    height: 70px;
+    flex-shrink: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.espaciar{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 5px;
+    flex-shrink: 0px;
+}
+/*----------------------MENU PRINCIPAL-------------------*/
+.menu1{
+    background-color: #002E42;
+    width: 100%;
+    height: 70px;
+    flex-shrink: 0px;
+    display: flex;
+}
+.logo{
+    width: 69px;
+    background-position-x: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 15px;
+}
+.logo img{
+    width: 69px;
+    height: 69px;
+}
+html{
+    scroll-behavior: smooth;
+}
+.nav{
+    width: 98%;
+    --img1: scale(1);
+    --img2: scale(0);
+    z-index: 1;
+}
+
+.nav:has( .dropdown:target ){
+    --img1: scale(0);
+    --img2: scale(1);
+    --clip:inset(0 0 0 0);
+}
+
+.nav__container{
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-areas: "title img";
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+.nav__title{
+    color: #fff;
+    grid-area: title;
+}
+.nav__menu{
+    grid-area: img;
+    position: relative;
+    z-index: 10;
+    transform: var(--img1);
+}
+.nav__menu--second{
+    transform: var(--img2);
+}
+.nav__icon{
+    width: 30px;
+    display: block;
+}
+.dropdown{
+    position: absolute;
+    background-color: #ffffff;
+    width: 75%;
+    max-width: 300px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content:center ;
+    gap: 1rem;
+    overflow-y: auto;
+    clip-path: var(--clip, inset(0 0 100% 100%));
+    transition: clip-path .5s;
+}
+.dropdown__list{
+    list-style: none;
+}
+.dropdown__link{
+    color: rgb(184, 187, 191);
+    padding: 1em .7em;
+    text-decoration: none;
+    
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+
+    position: relative;
+    background-color: var(--bg, transparent);
+    border-radius: 6px;
+}
+.dropdown__list:has( :checked ){
+    --rows: 1fr;
+    --rotate: rotate(180deg);
+    --bg: #28303B;
+}
+.dropdown__check{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.dropdown__arrow{
+    margin-left: auto;
+    transform: var(--rotate, 0);
+    transition: .2s transform;
+}
+.dropdown__content{
+    display: grid;
+    grid-template-rows: var(--rows, 0fr);
+    transition: .3s grid-template-rows;
+}
+.dropdown__sub{
+    overflow: hidden;
+}
+.dropdown__li{
+    width: 85%;
+    list-style: none;
+    margin-left: auto;
+}
+.dropdown__anchor{
+    padding: 1em 0;
+    display: block;
+    color: #B6BABE;
+    text-decoration: none;
+}
+/*--------------------SLIDER PARTIDOS--------------------------*/
+.menuPartidos{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0px;
+}
+.sliderPartidos{
+    padding: 10px 0 10px 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    position: relative;
+    align-items: center;
+}
+.elemento{
+    flex: 1 0 auto;
+    margin: 0 50px;
+    height: 150px;
+    object-fit: contain;
+}
+.elemento img{
+    height: 150px;
+}
+/*-------------------PRIMER SLIDER--------------------*/
+.menuImagen{
+    background-color: #002E42;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0px;
+    padding-bottom: 25px;
+}
+section{
+    display: flex;
+    padding-top: 25px;
+    height: 250px;
+}
+section img{
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+}
+section img:hover{
+    cursor: crosshair;
+    width: 55%;
+    opacity: 1;
+    filter: contrast(120%);
+}
+/*---------------------VIDEOS JUGADAS----------------------*/
+.menuVideos{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0px;
+}
+.titulin{
+    padding-top: 5%;
+    padding-left: 5%;
+    color: black;
+    font-family: Titulos;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: underline;
+}
+video {
+    width: 94%;
+    height: auto;   
+    padding: 4% 3% 4% 3%;
+}
+.videosSecun{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 33%;
+    /*background-color: #002E42;*/
+}
+#upNext{
+    padding-left: 5%;
+    color: black;
+    font-family: Titulos;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: underline;
+}
+/*-------------------------WATCHPLAYWIN----------------*/
+.watchandplay{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 50px;
+    flex-shrink: 0px; 
+}
+.watchplaywin{
+    color: #FFF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: Inter;
+    font-size: 23px;
+    height: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #002E42;
+    border-radius: 33px;
+}
+.watchplaywin img{
+    border-radius: 10px;
+}
+/*-----------------------GALERIA DE FOTOS----------------------*/
+.menuPhotos{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0px;
+}
+.container-card{
+	width: 100%;
+    height: auto;
+	display: flex;
+
+	margin: auto;
+}
+.card{
+	width: 100%;
+    height: auto;
+	margin: 20px;
+	border-radius: 6px;
+	overflow: hidden;
+	background:#fff;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	transition: all 400ms ease-out;
+	cursor: default;
+}
+.card:hover{
+	box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+	transform: translateY(-3%);
+}
+.card img{
+	width: 100%;
+    height: auto;
+}
+.card .contenido-card{
+	padding: 15px;
+	text-align: left;
+}
+.card .contenido-card p{
+	line-height: 1.8;
+	color: black;
+	font-size: 14px;
+    font-family: Inter;
+	margin-bottom: 5px;
+}
+.card .contenido-card a{
+	display: inline-block;
+	padding: 10px;
+	margin-top: 10px;
+	text-decoration: none;
+	color: #2fb4cc;
+	border: 1px solid #2fb4cc;
+	border-radius: 4px;
+	transition: all 400ms ease;
+	margin-bottom: 5px;
+}
+.card .contenido-card a:hover{
+	
+	color: #fff;
+}
+.sliderArticulos{
+    padding: 10px 0 10px 5%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    position: relative;
+    align-items: center;
+}
+.elementoArt{
+    flex: 1 0 auto;
+    margin-right: 50px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+/*-------------------------MERCH-------------------------*/
+.menuMerch{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0px;
+}
+.titulinMerch{
+    color: black;
+    font-family: Titulos;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: underline;
+}
+.slideMerch {
+    margin-top: 0;
+    width: 90%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 5% 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.slideMerch li {
+    width: 94%;
+    padding: 4% 3% 4% 3%;
+    height: 92%;
+    position: absolute;
+    transition: opacity 3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    opacity: 0;
+}
+.slideMerch img{
+    width: 94%;
+    height: 92%;
+    border-radius: 33px 33px 33px 33px;   
+    aspect-ratio: 1/1;
+}
+.slideMerch li:nth-child(1) {
+    animation: fade 16s infinite;
+}
+.slideMerch li:nth-child(2) {
+    animation: fade 16s 4s infinite;
+}
+.slideMerch li:nth-child(3) {
+    animation: fade 16s 8s infinite;
+}
+.slideMerch li:nth-child(4) {
+    animation: fade 16s 12s infinite;
+}
+/*---------------------------REDES SOCIALES------------------*/
+#menu{
+    background-color: #002E42;
+}
+#menuRedSocial{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 27%;
+    padding-right: 27%;
+}
+#menuRedSocial > div{
+    height: 33px;
+    background-repeat: no-repeat;
+    background-position: center center ;
+    background-size:contain;
+}
+#tiktok{
+    background-image: url(../img/tiktok.png);
+    width: 23px;
+    height: 23px;
+}
+#x{
+    background-image: url(../img/x.png);
+    width: 21px;
+    height: 21px;
+}
+#instagram{
+    background-image: url(../img/insta.png);
+    width: 23px;
+    height: 23px;
+}
+#facebook{
+    background-image: url(../img/facebook.png);
+    width: 25px;
+    height: 25px;
+}
+#discord{
+    background-image: url(../img/discord.png);
+    width: 27px;
+    height: 21px;
+}
+/*------------------------MENU FOOTER----------------------*/
+.menuFinal{
+    background-color: #002E42;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0px;
+    padding-bottom: 25px;
+}
+.logoFin{
+    width: 100%;
+    height: 69px;
+    text-align: center;
+}
+.copyRight{
+    color: #FFF;
+    height: 11px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;  
+    padding-top: 15px;
+}
+.textoFin{
+    padding-top: 15px;
+    height: 11px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+/*----------------------TEXTOS-----------------------*/
+a{
+    color: #FFF;
+}
+.text{
+    padding-top: 25px;
+    color: #FFF;
+    text-align: center;
+    font-family: Titulos;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: underline;
+}
+p{
+    padding-top: 5px;
+    color: #FFF;
+    text-align: left;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#shop{
+    padding-top: 15px;
+    color: black;
+    text-align: center;
+    font-family: Titulos;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: underline;
+}
+@media only screen and (min-width: 600px) {
+.banner{
+        height: 115px;
+}
+/*-----MENU PRINCIPAL--------*/
+.menu1{
+        height: 115px;
+}
+.logo{
+        padding-left: 25px;
+}
+.logo img{
+        height: 114px;
+        width: 114px;
+}
+/*-----SLIDER PARTIDOS--------*/
+.elemento{
+    width: 50%;
+    height: 200px;
+}
+.elemento img{
+    height: 200px;
+}
+/*-----PRIMER SLIDER--------*/
+.menuImagen{
+    height: auto;
+    
+}
+section{
+    display: flex;
+    width: 100%;
+    height: 480px;
+}
+section img{
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+}
+section img:hover{
+    cursor: crosshair;
+    width: 400px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+.titulin, .titulinMerch, .text{
+    font-size: 24px;
+}
+/*------VIDEOS-------*/
+#upNext{
+    font-size: 20px;
+}
+/*-------MENU ARTICULOS-----*/
+.menuPhotos{
+    height: auto;
+
+}
+.container-card{
+    max-width: 60%;
+}
+/*-----MERCH------*/
+.menuMerch{
+    height: auto;
+}
+p{
+    font-size: 20px;
+}
+.slideMerch{
+    width: 600px;
+    height: 600px;
+    padding: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/*------FOOTER-------*/
+.textoFin{
+    display: block;
+}
+.settingsFin{
+    display: flex;
+    width: 94%;
+    justify-content: space-between;
+    height: auto;
+    padding: 0 3% 0 3%;
+} 
+}
